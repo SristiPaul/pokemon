@@ -1076,7 +1076,7 @@ body {
 
         </ul>
 
-        <a href="login.html" class="navbar-action-btn">Log In</a>
+        <a href="login.js" class="navbar-action-btn">Log In</a>
       </nav>
 
       <div class="header-actions">
@@ -1085,7 +1085,7 @@ body {
           <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
         </button>
 
-        <a href="login.html" style="text-decoration: none;">
+        <a href="login.js" style="text-decoration: none;">
           <button style="background-color: rgb(255, 106, 0); color: white; border: none; padding: 5px 10px; cursor: pointer; font-size: 16px; border-radius: 5px;">
             Log In
         </button>
