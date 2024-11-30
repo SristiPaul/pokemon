@@ -20,22 +20,1922 @@ function main(event) {
   }
    
   return new Response(`
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Hello World</title>
-      <script>
-        ${htmx}
-      </script>
-    </head>
-    <body>
-      <h1>Hello World</h1>
-      <button hx-get="/messages" hx-target="#message">Load Message</button>
-      <p id="message"></p>
-    </body>
-    </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://icon-library.com/images/pokeball-icon-transparent/pokeball-icon-transparent-6.jpg" type="image/png"> 
+  <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/css/ionicons.min.css">
+  <!-- 
+    - primary meta tag
+  -->
+  <title>Pokemon Center</title>
+  <meta name="title" content="Pokemon Center">
+  <meta name="description" content="This is an eCommerce">
+
+
+  <!-- 
+    - custom css link
+  -->
+  <style>
+    
+
+/*CUSTOM PROPERTY*/
+
+:root {
+  
+  --bright-yellow-crayola: hsl(36, 94%, 57%);
+  --portland-orange: hsl(15, 84%, 57%);
+  --battleship-gray: hsl(0, 0%, 53%);
+  --silver-chalice: hsl(0, 0%, 70%);
+  --spanish-gray: hsl(0, 0%, 60%);
+  --sonic-silver: hsl(208, 7%, 46%);
+  --raisin-black: hsl(228, 6%, 17%);
+  --eerie-black: hsl(210, 3%, 13%);
+  --bittersweet: hsl(9, 96%, 69%);
+  --light-gray: hsl(0, 0%, 80%);
+  --platinum: hsl(0, 0%, 91%);
+  --amber: hsl(45, 100%, 51%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --onyx: hsl(220, 2%, 24%);
+
+  --ff-bangers: 'Bangers', cursive;
+  --ff-carter_one: 'Carter One', cursive;
+  --ff-nunito_sans: 'Nunito Sans', sans-serif;
+
+  --fs-1: 6.5rem;
+  --fs-2: 3.2rem;
+  --fs-3: 2.4rem;
+  --fs-4: 2rem;
+  --fs-5: 1.8rem;
+  --fs-6: 1.5rem;
+  --fs-7: 1.4rem;
+  --fs-8: 1rem;
+
+  --fw-400: 400;
+  --fw-700: 700;
+
+  --section-padding: 40px;
+
+  --shadow-1: 0 8px 16px hsla(0, 0%, 0%, 0.15);
+  --shadow-2: 0 8px 8px hsla(0, 0%, 0%, 0.2);
+
+  --radius-4: 4px;
+  --radius-10: 10px;
+
+  --transition-1: 0.25s ease;
+  --transition-2: 0.5s ease;
+  --cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+  --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li { list-style: none; }
+
+a,
+img,
+span,
+button,
+ion-icon { display: block; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img { height: auto; }
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+ion-icon { pointer-events: none; }
+
+address { font-style: normal; }
+
+html {
+  font-family: var(--ff-nunito_sans);
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+:focus-visible { outline-offset: 4px; }
+
+::-webkit-scrollbar { width: 10px; }
+
+::-webkit-scrollbar-track { background-color: hsl(0, 0%, 98%); }
+
+::-webkit-scrollbar-thumb { background-color: hsl(0, 0%, 80%); }
+
+::-webkit-scrollbar-thumb:hover { background-color: hsl(0, 0%, 70%); }
+
+.container { padding-inline: 15px; }
+
+.section { padding-block: var(--section-padding); }
+
+.has-bg-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: black; /* Fully opaque black */
+  opacity: 5.5; /* 50% transparent */
+}
+
+.h1,
+.h2,
+.h3 { line-height: 1.1; }
+
+.h1 {
+  color: var(--white);
+  -webkit-text-stroke: 2px #8aa2d9; /* Navy Blue border */    
+  font-family: var(--ff-bangers);
+  font-size: var(--fs-1);
+  font-weight: var(--fw-400);
+  letter-spacing: 1px;
+}
+
+.h2,
+.h3 { color: var(--eerie-black); }
+
+.h2 { font-size: var(--fs-2); }
+
+.h3 { font-size: var(--fs-3); }
+
+.btn {
+  background-color: var(--black);
+  color: var(--white);
+  max-width: max-content;
+  padding: 8px 25px;
+  font-weight: var(--fw-700);
+  border-radius: 50px;
+  transition: var(--transition-1);
+}
+
+.section-title {
+  text-align: center;
+  margin-block-end: 30px;
+}
+
+.section-title .span {
+  display: inline;
+  color: var(--portland-orange);
+}
+
+.img-holder {
+  aspect-ratio: var(--width) / var(--height);
+  background-color: var(--light-gray);
+  overflow: hidden;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.has-scrollbar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-snap-type: inline mandatory;
+  padding-block-end: 20px;
+  margin-block-end: -20px;
+}
+
+.scrollbar-item {
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+.has-scrollbar::-webkit-scrollbar { height: 10px; }
+
+.has-scrollbar::-webkit-scrollbar-track {
+  outline: 2px solid var(--portland-orange);
+  border-radius: var(--radius-10);
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: var(--radius-10);
+  background-color: var(--portland-orange);
+  border: 2px solid var(--white);
+}
+
+.has-scrollbar::-webkit-scrollbar-button { width: calc(25% - 30px); }
+
+.grid-list {
+  display: grid;
+  gap: 30px;
+}
+
+.w-100 { width: 100%; }
+
+.action-btn.user { display: none; }
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--white);
+  padding-block: 20px;
+  z-index: 4;
+}
+
+.header.active {
+  position: fixed;
+  box-shadow: var(--shadow-1);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.nav-toggle-btn {
+  font-size: 30px;
+  transition: var(--transition-1);
+}
+
+.nav-toggle-btn.active .menu-icon,
+.nav-toggle-btn .close-icon { display: none; }
+
+.nav-toggle-btn .menu-icon,
+.nav-toggle-btn.active .close-icon { display: block; }
+
+.logo {
+  font-family: var(--ff-carter_one);
+  font-size: 3rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.header .action-btn {
+  position: relative;
+  font-size: 22px;
+  transition: var(--transition-1);
+}
+
+.header .btn-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: var(--portland-orange);
+  color: var(--white);
+  font-size: var(--fs-8);
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 50px;
+}
+
+.nav-toggle-btn:is(:hover, :focus),
+.header .action-btn:is(:hover, :focus) { transform: scale(1.1); }
+
+.navbar {
+  position: fixed;
+  top: 85px;
+  left: -320px;
+  bottom: 0;
+  background-color: var(--white);
+  max-width: 320px;
+  width: 100%;
+  padding: 20px 10px;
+  box-shadow: var(--shadow-2);
+  transition: 0.25s var(--cubic-out);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.navbar.active {
+  transform: translateX(320px);
+  transition-timing-function: var(--cubic-in);
+}
+
+.navbar-link {
+  color: var(--eerie-black);
+  font-size: var(--fs-6);
+  padding: 10px 15px;
+}
+
+.navbar-action-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background-color: var(--sonic-silver);
+  color: var(--white);
+  font-weight: var(--fw-700);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.hero {
+  margin-block-start: 85px;
+  min-height: 360px;
+  background-position: left;
+  text-align: center;
+}
+
+.hero-title .span { font-size: 0.5em; }
+
+.hero-text {
+  color: var(--white);
+  margin-block: 15px 25px;
+}
+
+.hero .btn { margin-inline: auto; }
+
+.hero .btn:is(:hover, :focus) { background-color: var(--portland-orange); }
+
+
+
+.category-card .card-banner { border-radius: var(--radius-10); }
+
+.category-card .img-cover { transition: var(--transition-2); }
+
+.category-card:is(:hover, :focus-within) .img-cover { transform: scale(1.08); }
+
+.category-card .card-title {
+  margin-block-start: 15px;
+  text-align: center;
+  transition: var(--transition-1);
+}
+
+.category-card .card-title:is(:hover, :focus) { color: var(--portland-orange); }
+
+.offer-card {
+  border-radius: var(--radius-10);
+  padding: 20px;
+  display: grid;
+  align-content: center;
+}
+
+.offer-card .card-subtitle {
+  font-size: var(--fs-7);
+  text-transform: uppercase;
+  font-weight: var(--fw-700);
+}
+
+.offer-card .card-title {
+  color: var(--black);
+  margin-block: 5px 24px;
+}
+
+.offer-card .btn { background-color: var(--portland-orange); }
+
+.offer-card .btn:is(:hover, :focus) { background-color: var(--black); }
+
+
+.product .img-cover.hover,
+.product-card .card-action-btn { display: none; }
+
+.product-card { text-align: center; }
+
+.product-card .card-banner {
+  border: 1px solid var(--platinum);
+  border-radius: var(--radius-10);
+  margin-block-end: 20px;
+}
+
+.product-card :is(.wrapper, .rating-wrapper) { display: flex; }
+
+.product-card .wrapper {
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: var(--silver-chalice);
+  font-size: var(--fs-7);
+}
+
+.product-card .rating-wrapper {
+  color: var(--amber);
+  gap: 2px;
+}
+
+.product-card .rating-wrapper.gray { color: unset; }
+
+.product-card .h3 {
+  --fs-3: 1.8rem;
+  margin-block: 8px 10px;
+}
+
+.product-card .card-title { transition: var(--transition-1); }
+
+.product-card .card-title:is(:hover, :focus) { color: var(--portland-orange); }
+
+.product-card .card-price {
+  color: var(--portland-orange);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-700);
+}
+
+.service .img {
+  margin-inline: auto;
+  margin-block-end: 30px;
+}
+
+.service .section-title { margin-block-end: 60px; }
+
+.service-card { text-align: center; }
+
+.service-card .card-icon {
+  max-width: max-content;
+  margin-inline: auto;
+}
+
+.service-card .card-title { margin-block: 10px; }
+
+.service-card .card-text { color: var(--spanish-gray); }
+
+.cta { background-position: 75%; }
+
+.cta-banner { display: none; }
+
+.cta-content { padding-block: 80px var(--section-padding); }
+
+.cta .section-title {
+  text-align: left;
+  margin-block: 10px 20px;
+}
+
+.cta .section-text { margin-block-end: 30px; }
+
+.cta .btn:is(:hover, :focus) {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.brand { --section-padding: 100px; }
+
+.brand .has-scrollbar { gap: 0; }
+
+.brand .scrollbar-item { min-width: 50%; }
+
+.brand .scrollbar-item:not(:last-child) { border-inline-end: 1px solid var(--platinum); }
+
+.brand-card {
+  max-width: max-content;
+  margin-inline: auto;
+}
+
+
+.footer {
+  background-color: var(--raisin-black);
+  color: var(--battleship-gray);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top;
+}
+
+.footer-top {
+  padding-block-start: 100px;
+  border-block-end: 1px solid var(--onyx);
+}
+
+.footer-top .container {
+  display: grid;
+  gap: 30px;
+}
+
+.footer .logo {
+  color: var(--white);
+  margin-block-end: 10px;
+}
+
+.footer-text {
+  font-size: var(--fs-6);
+  margin-block-end: 25px;
+}
+
+.footer-text .link {
+  display: inline-block;
+  color: var(--portland-orange);
+}
+
+.contact-item {
+  margin-block-end: 15px;
+  color: var(--white);
+  font-weight: var(--fw-700);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-item ion-icon {
+  flex-shrink: 0;
+  font-size: 22px;
+  color: var(--portland-orange);
+}
+
+.social-list {
+  display: flex;
+  gap: 10px;
+}
+
+.social-link {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 12px;
+  border-radius: 50%;
+  transition: var(--transition-1);
+}
+
+.social-link:is(:hover, :focus) {
+  background-color: var(--portland-orange);
+  color: var(--white);
+}
+
+.footer-list-title {
+  color: var(--white);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-700);
+  padding-block: 10px;
+}
+
+.footer-link {
+  padding-block: 4px;
+  transition: var(--transition-1);
+}
+
+.footer-link:is(:hover, :focus) { color: var(--portland-orange); }
+
+.footer-bottom { padding-block: 20px; }
+
+.copyright { margin-block-end: 10px; }
+
+.copyright-link { display: inline-block; }
+
+.footer-bottom .img {
+  width: 100%;
+  max-width: max-content;
+}
+
+
+
+
+/*BACK TO TOP*/
+
+.back-top-btn {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  background-color: var(--portland-orange);
+  color: var(--white);
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: var(--shadow-2);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-1);
+  z-index: 4;
+}
+
+.back-top-btn.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-10px);
+}
+
+
+
+
+
+/*
+  #MEDIA QUERIES
+*/
+
+/**
+ * responsive for large than 575px screen
+ */
+
+@media (min-width: 575px) {
+
+  /*
+    CUSTOM PROPERTY
+   */
+
+  :root {
+
+    /*
+      typography
+    */
+
+    --fs-2: 4rem;
+    --fs-3: 2.6rem;
+
+  }
+
+
+
+  /*
+  REUSED STYLE
+   */
+
+  .scrollbar-item { min-width: calc(50% - 15px); }
+
+  .grid-list { grid-template-columns: 1fr 1fr; }
+
+
+
+  /**
+   * HERO
+   */
+
+  .hero {
+    display: grid;
+    padding-inline-start: 20px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+
+
+  /**
+   * OFFER
+   */
+
+  .offer .grid-list { grid-template-columns: 1fr; }
+
+
+
+  /**
+   * PRODUCT
+   */
+
+  .product-card .card-banner { position: relative; }
+
+  .product-card .card-action-btn,
+  .product-card .card-banner .hover {
+    display: block;
+    position: absolute;
+  }
+
+  .product-card .card-banner .hover {
+    top: 0;
+    left: 0;
+  }
+
+  .product-card:is(:hover, :focus-within) .default,
+  
+
+  .product-card .default,
+  .product-card:is(:hover, :focus-within) .hover { opacity: 1; }
+/*---*/
+  .product-card .card-action-btn {
+    top: 15px;
+    right: 15px;
+    color: var(--eerie-black);
+    font-size: 20px;
+    background-color: var(--white);
+    border: 1px solid var(--platinum);
+    padding: 12px;
+    border-radius: 50%;
+    transition: var(--transition-1);
+    opacity: 0;
+  }
+
+  .product-card .card-action-btn:is(:hover, :focus) {
+    background-color: var(--portland-orange);
+    border-color: var(--portland-orange);
+    color: var(--white);
+  }
+
+  .product-card:is(:hover, :focus-within) .card-action-btn { opacity: 1; }
+
+
+
+  /**
+   * CTA
+   */
+
+  .cta .img { width: 250px; }
+
+  .cta .h2 { --fs-2: 3.2rem; }
+
+
+
+  /**
+   * BRAND
+   */
+
+  .brand .scrollbar-item { min-width: 25%; }
+
+
+
+  /**
+   * FOOTER
+   */
+
+  .footer-top .container { grid-template-columns: 1fr 1fr; }
+
+}
+
+
+
+
+
+/**
+ * responsive for large than 768px screen
+ */
+
+@media (min-width: 768px) {
+
+  /**
+   * CUSTOM PROPERTY
+   */
+
+  :root {
+
+    /**
+     * typography
+     */
+
+    --fs-1: 9rem;
+
+  }
+
+
+
+  /**
+   * REUSED STYLE
+   */
+
+  .scrollbar-item { min-width: calc(33.33% - 20px); }
+
+  .grid-list { grid-template-columns: repeat(3, 1fr); }
+
+
+
+  /**
+   * HERO
+   */
+
+  .hero {
+    aspect-ratio: 1512 / 784;
+    padding-inline-start: 10%;
+  }
+
+  .hero-text { font-size: 2.4rem; }
+
+
+
+  /**
+   * OFFER
+   */
+
+  .offer .grid-list { grid-template-columns: repeat(3, 1fr); }
+
+
+
+
+  /**
+   * FOOTER
+   */
+
+  .footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+}
+
+
+
+
+
+/**
+ * responsive for large than 992px screen
+ */
+
+@media (min-width: 992px) {
+
+  /**
+   * CUSTOM PROPERTY
+   */
+
+  :root {
+
+    /**
+     * typography
+     */
+
+    --fs-1: 12rem;
+    --fs-3: 3rem;
+
+    /**
+     * spacing
+     */
+
+    --section-padding: 50px;
+
+  }
+
+
+
+  /**
+   * REUSED STYLE
+   */
+
+  .container { padding-inline: 30px; }
+
+  .scrollbar-item { min-width: calc(20% - 24px); }
+
+
+
+  /**
+   * HEADER
+   */
+
+  .nav-toggle-btn,
+  .navbar-action-btn { display: none; }
+
+  .header {
+    --color: var(--white);
+    background: none;
+  }
+
+  .header.active {
+    --color: var(--black);
+    background-color: var(--white);
+  }
+
+  .header .logo,
+  .header .action-btn { color: var(--color); }
+
+  .header .action-btn.user { display: block; }
+
+  .logo { font-size: 3.8rem; }
+
+  .navbar,
+  .navbar.active {
+    all: unset;
+    margin-inline-end: auto;
+  }
+
+  .navbar-list {
+    display: flex;
+    gap: 10px;
+  }
+
+  .navbar-link {
+    color: var(--color);
+    --fs-6: 1.7rem;
+    font-weight: var(--fw-700);
+    transition: var(--transition-1);
+  }
+
+  .header.active .navbar-link:is(:hover, :focus) { color: var(--portland-orange); }
+
+
+
+  /**
+   * HERO
+   */
+
+  .hero { margin-block-start: 0; }
+
+
+
+  /**
+   * CATEGORY
+   */
+
+  .category-card .h3 { --fs-3: 2rem; }
+
+
+
+  /**
+   * SERVICE
+   */
+
+  .service .grid-list { grid-template-columns: repeat(4, 1fr); }
+
+  .service-card .h3 { --fs-3: 2.4rem; }
+
+
+
+  /**
+   * BRAND
+   */
+
+  .brand .scrollbar-item { min-width: 20%; }
+
+
+
+  /**
+   * FOOTER
+   */
+
+  .footer-top .container { grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr; }
+
+}
+
+
+
+
+
+/**
+ * responsive for large than 1200px screen
+ */
+
+@media (min-width: 1200px) {
+
+  /**
+   * CUSTOM PROPERTY
+   */
+
+  :root {
+
+    /**
+     * typography
+     */
+
+    --fs-1: 15rem;
+    --fs-3: 3.2rem;
+
+  }
+
+
+
+  /**
+   * REUSED STYLE
+   */
+
+  .grid-list { grid-template-columns: repeat(4, 1fr); }
+
+
+
+  /**
+   * CTA
+   */
+
+ 
+
+
+
+  /**
+   * BRAND, FOOTER
+   */
+
+  :is(.brand, .footer) .container {
+    max-width: 1200px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .footer { padding-block-start: 40px; }
+
+}
+  </style>
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bangers&family=Carter+One&family=Nunito+Sans:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="#.jpg">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <button class="nav-toggle-btn" aria-label="toggle manu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true" class="menu-icon"></ion-icon>
+        <ion-icon name="close-outline" aria-label="true" class="close-icon"></ion-icon>
+      </button>
+
+      <a href="#" class="logo">Pokemon Center</a>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="#home" class="navbar-link" data-nav-link>Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#shop" class="navbar-link" data-nav-link>Shop</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link" data-nav-link>Collections</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link" data-nav-link>Blogs</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#" class="navbar-link" data-nav-link>Contact</a>
+          </li>
+
+        </ul>
+
+        <a href="login.html" class="navbar-action-btn">Log In</a>
+      </nav>
+
+      <div class="header-actions">
+
+        <button class="action-btn" aria-label="Search">
+          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <a href="login.html" style="text-decoration: none;">
+          <button style="background-color: rgb(255, 106, 0); color: white; border: none; padding: 5px 10px; cursor: pointer; font-size: 16px; border-radius: 5px;">
+            Log In
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero has-bg-image" id="home" aria-label="home"
+        style="background-image: url('https://i.pinimg.com/originals/a3/f7/20/a3f7208321d170bae649255a0845e5fe.jpg')">
+        <div class="container">
+
+          <h1 class="h1 hero-title">
+            <span class="span">Journey Starts</span>Here
+          </h1>
+
+          <p class="hero-text">Find the perfect Pokémon gift for any occasion.</p>
+
+          <a href="#" class="btn">Shop Now</a>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #CATEGORY
+      -->
+
+      <section class="section category" aria-label="category">
+        <div class="container">
+
+          <h2 class="h2 section-title">
+            <span class="span">Top</span> categories
+          </h2>
+
+          <ul class="has-scrollbar">
+
+            <li class="scrollbar-item">
+              <div class="category-card">
+
+                <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                  <img src="https://i.pinimg.com/originals/47/08/7f/47087fa174d25e5c0fde8cabb2e9ce42.jpg" width="330" height="300" loading="lazy" alt="plush"
+                    class="img-cover">
+                </figure>
+
+                <h3 class="h3">
+                  <a href="#" class="card-title">Plush</a>
+                </h3>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="category-card">
+
+                <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                  <img src="https://i.pinimg.com/originals/8f/49/10/8f49106c36a26731dbf6e11b6a9fda10.jpg" width="330" height="300" loading="lazy" alt="Clothing"
+                    class="img-cover">
+                </figure>
+
+                <h3 class="h3">
+                  <a href="#" class="card-title">Clothing</a>
+                </h3>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="category-card">
+
+                <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                  <img src="https://i.pinimg.com/originals/13/f8/53/13f853319f5fa45ccafbee4f5495de2a.png" width="330" height="300" loading="lazy" alt="Trading Card Game"
+                    class="img-cover">
+                </figure>
+
+                <h3 class="h3">
+                  <a href="#" class="card-title">Trading Card Game</a>
+                </h3>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="category-card">
+
+                <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                  <img src="https://i.pinimg.com/originals/b4/a1/9d/b4a19dc80753e3f6cbc7bdcd52090c79.jpg" width="330" height="300" loading="lazy" alt="Stickers"
+                    class="img-cover">
+                </figure>
+
+                <h3 class="h3">
+                  <a href="#" class="card-title">Stickers</a>
+                </h3>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="category-card">
+
+                <figure class="card-banner img-holder" style="--width: 330; --height: 300;">
+                  <img src="https://i.pinimg.com/originals/0f/29/e5/0f29e5d759b338d166ce757d1a9412f4.jpg" width="330" height="300" loading="lazy"
+                    alt="Holiday Special" class="img-cover">
+                </figure>
+
+                <h3 class="h3">
+                  <a href="#" class="card-title">Holiday Special</a>
+                </h3>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #OFFERS
+      -->
+
+      <section class="section offer" aria-label="offer">
+        <div class="container">
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="offer-card has-bg-image img-holder" style="position: relative; --width: 540; --height: 374; background-image: url('https://wallpaperaccess.com/full/135120.png');">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); z-index: 1;"></div>
+                
+                <p class="card-subtitle" style="position: relative; z-index: 2;">Selected Items. Online Only.</p>
+                
+                <h3 class="h3 card-title" style="position: relative; z-index: 2;">
+                  Winter Special <span class="span">Deals</span>
+                </h3>
+                
+                <a href="#" class="btn" style="position: relative; z-index: 2;">Read More</a>
+              </div>
+            </li>
+            
+            <li>
+              <div class="offer-card has-bg-image img-holder" style="position: relative; --width: 540; --height: 374; background-image: url('https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/12/wiglett-and-sleeping-cubone-pokemon-plushes.jpg');">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); z-index: 1;"></div>
+                
+                <p class="card-subtitle" style="position: relative; z-index: 2;">Original Squishmallows</p>
+                
+                <h3 class="h3 card-title" style="position: relative; z-index: 2;">
+                  Shop new arrival<span class="span">plush</span>
+                </h3>
+                
+                <a href="#" class="btn" style="position: relative; z-index: 2;">Read More</a>
+              </div>
+            </li>
+            
+            <li>
+              <div class="offer-card has-bg-image img-holder" style="position: relative; --width: 540; --height: 374; background-image: url('https://gonintendo.com/attachments/image/10966/file/medium-c686678144421c784532a99e8cf7ffba.webp');">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); z-index: 1;"></div>
+                
+                <p class="card-subtitle" style="position: relative; z-index: 2;">Our Brand You Will Love</p>
+                
+                <h3 class="h3 card-title" style="position: relative; z-index: 2;">
+                  New in this <span class="span">year</span>
+                </h3>
+                
+                <a href="#" class="btn" style="position: relative; z-index: 2;">Read More</a>
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #PRODUCT
+      -->
+
+      <section class="section product" id="shop" aria-label="product">
+        <div class="container">
+
+          <h2 class="h2 section-title">
+            <span class="span">Best</span> Seller
+          </h2>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="https://www.wikihow.com/images/5/51/Sell-Your-Pokemon-Cards-Step-13.jpg" width="360" height="360" loading="lazy"
+                    alt="Product" class="img-cover default">
+                  <img src="https://www.wikihow.com/images/5/51/Sell-Your-Pokemon-Cards-Step-13.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">Pokemon Cards</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Pokemon Season 1 Trading Cards</a>
+                  </h3>
+
+                  <data class="card-price" value="15">$35.00</data>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="https://www.asakura-japan.com/data/asakura-japan/product/20161104_6734dc.jpg" width="360" height="360" loading="lazy"
+                    alt="Purus consequat congue sit" class="img-cover default">
+                  <img src="https://www.asakura-japan.com/data/asakura-japan/product/20161104_6734dc.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper yellow">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">Pokemon Plush</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Pikachu X Delibird</a>
+                  </h3>
+
+                  <data class="card-price" value="45">$55.00</data>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="https://i.pinimg.com/originals/5a/af/cd/5aafcdbaca9c94de33588acaffb0f7f5.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover default">
+                  <img src="https://i.pinimg.com/originals/5a/af/cd/5aafcdbaca9c94de33588acaffb0f7f5.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper yellow">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">Clothing</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">jigglypuff Hoodie</a>
+                  </h3>
+
+                  <data class="card-price" value="45">$250.00</data>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="https://www.yiassu.com/wp-content/uploads/2023/01/Genuine-Pikachu-Creative-Anime-Cartoon-Doll-Keychain-Pokemon-Cartoon-Doll-Keyring-Bag-Car-Key-Chain-Ring.jpg_640x640-768x768.png" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover default">
+                  <img src="https://www.yiassu.com/wp-content/uploads/2023/01/Genuine-Pikachu-Creative-Anime-Cartoon-Doll-Keychain-Pokemon-Cartoon-Doll-Keyring-Bag-Car-Key-Chain-Ring.jpg_640x640-768x768.png" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper yellow">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">Keychain</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Pichu Keychain</a>
+                  </h3>
+
+                  <data class="card-price" value="49">$15.00</data>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="https://images.bonanzastatic.com/afu/images/1146/e537/0728_5006176468/s-l1600.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover default">
+                  <img src="https://images.bonanzastatic.com/afu/images/1146/e537/0728_5006176468/s-l1600.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper yellow">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">Coffee Mug</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Pikachu Coffee Mug</a>
+                  </h3>
+
+                  <data class="card-price" value="85">$85.00</data>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="https://i.pinimg.com/originals/66/15/cf/6615cf02cdcfd75941c5ba5cc4c6ee8b.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover default">
+                  <img src="https://i.pinimg.com/originals/66/15/cf/6615cf02cdcfd75941c5ba5cc4c6ee8b.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper yellow">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">Games</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">NITENDO: Game boy</a>
+                  </h3>
+
+                  <data class="card-price" value="85">$65.00</data>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/misc/_tiles/pokemon-center/08192021/slider/01.jpg" width="360" height="360" loading="lazy"
+                    alt="">
+                  <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/misc/_tiles/pokemon-center/08192021/slider/01.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper yellow">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">Plush</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Piplup plush</a>
+                  </h3>
+
+                  <data class="card-price" value="85">$80.00</data>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="product-card">
+
+                <div class="card-banner img-holder" style="--width: 360; --height: 360;">
+                  <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2020/12/pokemon-furniture.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover default">
+                  <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2020/12/pokemon-furniture.jpg" width="360" height="360" loading="lazy"
+                    alt="" class="img-cover hover">
+
+                  <button class="card-action-btn" aria-label="add to card" title="Add To Card">
+                    <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+                  </button>
+                </div>
+
+                <div class="card-content">
+
+                  <div class="wrapper">
+                    <div class="rating-wrapper yellow">
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                      <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    </div>
+
+                    <span class="span">Furniture</span>
+                  </div>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Ditto Sofa</a>
+                  </h3>
+
+                  <data class="card-price" value="55">$850.00</data>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #SERVICE
+      -->
+
+      <section class="section service" aria-label="service">
+        <div class="container">
+
+          <img src="https://icon-library.com/images/pokeball-icon-transparent/pokeball-icon-transparent-6.jpg" width="122" height="136" loading="lazy" alt="" class="img">
+
+          <h2 class="h2 section-title">
+            <span class="span">Gotta Catch</span> 'Em All!
+          </h2>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="service-card">
+
+                <figure class="card-icon">
+                  <img src="https://www.clipartkey.com/mpngs/m/311-3114647_icon-delivery-services-free-clipart-png-download-same.png" width="70" height="70" loading="lazy"
+                    alt="service icon">
+                </figure>
+
+                <h3 class="h3 card-title">Free Same-Day Delivery</h3>
+
+                <p class="card-text">
+                  Order by 2pm local time to get free delivery on orders $50+ today.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <figure class="card-icon">
+                  <img src="https://muhancorporate.com.au/Userdefined/images/icons/30-days-icon.png" width="70" height="70" loading="lazy"
+                    alt="service icon">
+                </figure>
+
+                <h3 class="h3 card-title">30 Day Return</h3>
+
+                <p class="card-text">
+                  30% off your first order.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <figure class="card-icon">
+                  <img src="https://logowik.com/content/uploads/images/secure-payment2785.jpg" width="70" height="70" loading="lazy"
+                    alt="service icon">
+                </figure>
+
+                <h3 class="h3 card-title">Security payment</h3>
+
+                <p class="card-text">
+                  25% off your online order of $50+. Available at most locations.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="service-card">
+
+                <figure class="card-icon">
+                  <img src="https://www.citypng.com/public/uploads/preview/transparent-call-customer-service-support-247-black-icon-21635328951o1xmqbeapm.png" width="70" height="70" loading="lazy"
+                    alt="service icon">
+                </figure>
+
+                <h3 class="h3 card-title">24/7 Support</h3>
+
+                <p class="card-text">
+                  Having trouble? Consult with us.
+                </p>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer" style="background-image: url('https://cdn.wallpapersafari.com/7/85/dDBH5Q.jpg')">
+
+    <div class="footer-top section">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">Pokemon Center</a>
+
+          <p class="footer-text">
+            If you have any question, please contact us at <a href="mailto:pokemon@gmail.com"
+              class="link">pokemon@gmail.com</a>
+          </p>
+
+          <ul class="contact-list">
+
+            <li class="contact-item">
+              <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+
+              <address class="address">
+                AlpaSunshine City Mall in Ikebukuro, Tokyo, Japan
+              </address>
+            </li>
+
+            <li class="contact-item">
+              <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+
+              <a href="tel:+16234567891011" class="contact-link">(+1)-1234-50-678</a>
+            </li>
+
+          </ul>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Corporate</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Careers</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About Us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact Us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">FAQs</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Information</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Online Store</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Privacy Policy</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Refund Policy</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Shipping Policy</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Terms of Service</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Track Order</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Services</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Shipping</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Help</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Resource Center</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2024 Made by <a href="#" class="copyright-link">CodeCrafterSristi</a>
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+
+'use strict';
+
+/**
+ * add event on element
+ */
+
+const addEventOnElem = function (elem, type, callback) {
+  if (elem.length > 1) {
+    for (let i = 0; i < elem.length; i++) {
+      elem[i].addEventListener(type, callback);
+    }
+  } else {
+    elem.addEventListener(type, callback);
+  }
+}
+
+/**
+ * navbar toggle
+ */
+
+const navToggler = document.querySelector("[data-nav-toggler]");
+const navbar = document.querySelector("[data-navbar]");
+const navbarLinks = document.querySelectorAll("[data-nav-link]");
+
+const toggleNavbar = function () {
+  navbar.classList.toggle("active");
+  navToggler.classList.toggle("active");
+}
+
+addEventOnElem(navToggler, "click", toggleNavbar);
+
+const closeNavbar = function () {
+  navbar.classList.remove("active");
+  navToggler.classList.remove("active");
+}
+
+addEventOnElem(navbarLinks, "click", closeNavbar);
+
+/**
+ * active header when window scroll down to 100px
+ */
+
+const header = document.querySelector("[data-header]");
+const backTopBtn = document.querySelector("[data-back-top-btn]");
+
+const activeElemOnScroll = function () {
+  if (window.scrollY > 100) {
+    header.classList.add("active");
+    backTopBtn.classList.add("active");
+  } else {
+    header.classList.remove("active");
+    backTopBtn.classList.remove("active");
+  }
+}
+
+addEventOnElem(window, "scroll", activeElemOnScroll);
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
   `, {
     headers: {
       'Content-Type': 'text/html; charset=utf-8'
