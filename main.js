@@ -1877,7 +1877,10 @@ body {
   </a>
 
 
-'use strict';
+<script>
+  'use strict';
+
+
 
 /**
  * add event on element
@@ -1892,6 +1895,8 @@ const addEventOnElem = function (elem, type, callback) {
     elem.addEventListener(type, callback);
   }
 }
+
+
 
 /**
  * navbar toggle
@@ -1908,12 +1913,15 @@ const toggleNavbar = function () {
 
 addEventOnElem(navToggler, "click", toggleNavbar);
 
+
 const closeNavbar = function () {
   navbar.classList.remove("active");
   navToggler.classList.remove("active");
 }
 
 addEventOnElem(navbarLinks, "click", closeNavbar);
+
+
 
 /**
  * active header when window scroll down to 100px
@@ -1933,6 +1941,7 @@ const activeElemOnScroll = function () {
 }
 
 addEventOnElem(window, "scroll", activeElemOnScroll);
+</script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
