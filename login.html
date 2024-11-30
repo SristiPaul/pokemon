@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('https://wallpapers.com/images/hd/pokemon-christmas-nkt5qy265teu6xks.jpg'); /* Replace with the path to your image */
+    background-size: cover; /* This makes the background image cover the entire body */
+    background-position: center; /* This centers the image */
+    background-repeat: no-repeat; /* This prevents the image from repeating */
+}
+.content{
+    margin: 8%;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 4rem 1rem 4rem 1rem;
+    box-shadow: 0 0 5px 5px rgba(0,0,0, .05);
+    border-radius: 0 px;
+}
+
+/* login.css */
+.content img {
+    max-width: 100%; /* Ensures the image is responsive */
+    height: auto; /* Maintains the aspect ratio */
+    width: 85%; /* Adjust this value to make the image smaller or larger */
+    /* You can also use specific sizes like width: 200px; */
+}
+
+.signin-text{
+    font-style: normal;
+    font-weight: 600 !important;
+
+}
+.form-control{
+    display: block;
+    width:100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height:1.5;
+    border-color: #00ac96 !important;
+    border-style: solid !important;
+    border-width: 0 0 1px 0 !important;
+    padding: 0px !important;
+    color:#495057;
+    height: auto;
+    border-radius: 0;
+    background-color: #fff;
+    background-clip: padding-box;
+    
+}
+
+
+.form-control:focus{
+    color: #495057;
+    background-color: #fff;
+    border-color: #fff;
+    outline: 0;
+    box-shadow: none;
+}
+.birthday-section{
+    padding: 15px;
+}
+.btn-class{
+    border-color: #014691;
+    color: #014691;
+}
+.btn-class:hover{
+    background-color:  #014691;
+    color: #fff;
+}
+    </style>
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row content">
+          <div class="col-md-6 mb-3">
+           <img src="https://i.pinimg.com/originals/df/b9/f9/dfb9f9276e49372d16e107c2751b74c0.png" alt="Image in login page">
+          </div>
+          <div class="col-md-6">
+            <h3 class="signin-text mb-3"> Sign In</h3>
+            <form>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control">
+              </div>
+              <div class="form-group form-check">
+                <input type="checkbox" name="checkbox" class="form-check-input" id="checkbox">
+                <label class="form-check-label" for="checkbox">Remember Me</label>
+              </div>
+              <button class="btn btn-class">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
